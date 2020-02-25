@@ -36,13 +36,19 @@ class Olist:
                           how='left',
                           on="order_id")
         merged_df = data_dict['olist_products_dataset'].merge(right=merged_df,
-                          how='inner',
+                          how='left',
                           on="product_id")
         merged_df = data_dict['olist_sellers_dataset'].merge(right=merged_df,
-                          how='inner',
+                          how='left',
                           on="seller_id")
         final_df = merged_df[list_col]
         return final_df
+
+    def ping(self):
+        """
+        You call ping I print pong.
+        """
+        print('pong')
 
 if __name__ == '__main__':
     olist = Olist()
